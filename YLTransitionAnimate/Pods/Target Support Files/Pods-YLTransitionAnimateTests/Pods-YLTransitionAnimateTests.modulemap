@@ -1,0 +1,6 @@
+framework module Pods_YLTransitionAnimateTests {
+  umbrella header "Pods-YLTransitionAnimateTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
