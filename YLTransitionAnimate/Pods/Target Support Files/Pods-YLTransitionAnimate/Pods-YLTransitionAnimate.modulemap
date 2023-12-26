@@ -1,6 +1,0 @@
-framework module Pods_YLTransitionAnimate {
-  umbrella header "Pods-YLTransitionAnimate-umbrella.h"
-
-  export *
-  module * { export * }
-}

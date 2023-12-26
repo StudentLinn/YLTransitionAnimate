@@ -1,5 +1,0 @@
-#import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_YLTransitionAnimate_YLTransitionAnimateUITests : NSObject
-@end
-@implementation PodsDummy_Pods_YLTransitionAnimate_YLTransitionAnimateUITests
-@end
