@@ -5,11 +5,11 @@ Pod::Spec.new do |s|
 
 # 名称
   s.name             = 'YLTransitionAnimate'
-  s.version          = '0.0.1'
+  s.version          = '0.0.3'
   s.summary          = '自己日常使用的过渡动画'
 
   s.description      = <<-DESC
-		自己日常使用的过渡动画
+		自己日常使用的过渡动画,会在有更好的思路之后持续更新
                        DESC
 
   s.homepage         = 'https://github.com/StudentLinn/YLTransitionAnimate'
