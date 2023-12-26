@@ -17,8 +17,8 @@
 		844C60082B3AB56300EC5207 /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C60072B3AB56300EC5207 /* DemoTests.swift */; };
 		844C60122B3AB56300EC5207 /* DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C60112B3AB56300EC5207 /* DemoUITests.swift */; };
 		844C60142B3AB56300EC5207 /* DemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C60132B3AB56300EC5207 /* DemoUITestsLaunchTests.swift */; };
-		844C60232B3AB88F00EC5207 /* YLTransitionAnimateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C60212B3AB88F00EC5207 /* YLTransitionAnimateConfig.swift */; };
-		844C60242B3AB88F00EC5207 /* YLTransitionAnimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C60222B3AB88F00EC5207 /* YLTransitionAnimate.swift */; };
+		844C602D2B3AD1BA00EC5207 /* YLTransitionAnimateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C602B2B3AD1BA00EC5207 /* YLTransitionAnimateConfig.swift */; };
+		844C602E2B3AD1BA00EC5207 /* YLTransitionAnimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C602C2B3AD1BA00EC5207 /* YLTransitionAnimate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +53,8 @@
 		844C600D2B3AB56300EC5207 /* DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		844C60112B3AB56300EC5207 /* DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUITests.swift; sourceTree = "<group>"; };
 		844C60132B3AB56300EC5207 /* DemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		844C60212B3AB88F00EC5207 /* YLTransitionAnimateConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YLTransitionAnimateConfig.swift; sourceTree = "<group>"; };
-		844C60222B3AB88F00EC5207 /* YLTransitionAnimate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YLTransitionAnimate.swift; sourceTree = "<group>"; };
+		844C602B2B3AD1BA00EC5207 /* YLTransitionAnimateConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YLTransitionAnimateConfig.swift; sourceTree = "<group>"; };
+		844C602C2B3AD1BA00EC5207 /* YLTransitionAnimate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YLTransitionAnimate.swift; sourceTree = "<group>"; };
 		891FBA6F78B5FDBCCB7927FF /* Pods_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DBE9A35134244B7E216982F /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		917C7AFC0066854C00632122 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		844C5FEF2B3AB56200EC5207 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				844C60202B3AB88F00EC5207 /* YLTransitionAnimate */,
+				844C602A2B3AD1BA00EC5207 /* YLTransitionAnimate */,
 				844C5FF02B3AB56200EC5207 /* AppDelegate.swift */,
 				844C5FF42B3AB56200EC5207 /* ViewController.swift */,
 				844C5FF92B3AB56300EC5207 /* Assets.xcassets */,
@@ -156,14 +156,13 @@
 			path = DemoUITests;
 			sourceTree = "<group>";
 		};
-		844C60202B3AB88F00EC5207 /* YLTransitionAnimate */ = {
+		844C602A2B3AD1BA00EC5207 /* YLTransitionAnimate */ = {
 			isa = PBXGroup;
 			children = (
-				844C60212B3AB88F00EC5207 /* YLTransitionAnimateConfig.swift */,
-				844C60222B3AB88F00EC5207 /* YLTransitionAnimate.swift */,
+				844C602B2B3AD1BA00EC5207 /* YLTransitionAnimateConfig.swift */,
+				844C602C2B3AD1BA00EC5207 /* YLTransitionAnimate.swift */,
 			);
-			name = YLTransitionAnimate;
-			path = ../../YLTransitionAnimate;
+			path = YLTransitionAnimate;
 			sourceTree = "<group>";
 		};
 		AEC2678C117E8F9A05A2BD4F /* Frameworks */ = {
@@ -414,10 +413,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844C60232B3AB88F00EC5207 /* YLTransitionAnimateConfig.swift in Sources */,
+				844C602D2B3AD1BA00EC5207 /* YLTransitionAnimateConfig.swift in Sources */,
 				844C5FF52B3AB56200EC5207 /* ViewController.swift in Sources */,
 				844C5FF12B3AB56200EC5207 /* AppDelegate.swift in Sources */,
-				844C60242B3AB88F00EC5207 /* YLTransitionAnimate.swift in Sources */,
+				844C602E2B3AD1BA00EC5207 /* YLTransitionAnimate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
