@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+//MARK: 版本:0.0.5
 ///过渡动画类型(移动位置的话需要有snp并且设置了centerY或者X属性)
 public enum YLTransitionAnimateType : Int {
     ///淡入（修改透明度）

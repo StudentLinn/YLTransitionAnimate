@@ -10,6 +10,7 @@ import UIKit
 
 let YLAnimateManager = YLTransitionAnimateManager.shared
 
+//MARK: 版本:0.0.5
 ///动画保存配置单例
 public class YLTransitionAnimateManager {
     ///单例
