@@ -33,21 +33,30 @@ extension YLTransitionAnimateManager {
     /// - Parameters:
     ///   - view:什么控件执行
     ///   - duration: 动画执行时间->默认0.3
-    ///   - delay: 动画延迟时间默认0.05
+    ///   - delay: 动画延迟时间默认0.00
     ///   - options: 动画设置数组->默认淡入淡出首尾减速+允许同时执行
+    ///   - doAfterZeroZeroOne: 是否需要延迟0.01秒与主线程拆分开来
+    ///   - superViewLayoutIfNeed: 父类的布局是否需要刷新
+    ///   - onceConfig: 单次配置
     ///   - typeArr: 动画类型
     ///   - animateWith: 执行动画时伴随着什么一起执行
     ///   - completion: 完成回调(传出动画是否在调用完成处理程序之前实际完成)
     public func useAnimate(view:UIView?,
                            duration:Double = 0.3,
-                           delay:Double = 0.01,
+                           delay:Double = 0.00,
                            options:UIView.AnimationOptions = [.curveEaseInOut, .beginFromCurrentState],
+                           doAfterZeroZeroOne:Bool = true,
+                           superViewLayoutIfNeed:Bool = true,
+                           onceConfig:((inout YLTransitionAnimateConfig) -> Void)? = nil,
                            typeArr:[YLTransitionAnimateType],
                            animateWith:(() -> Void)? = nil,
                            completion:((Bool) -> Void)? = nil){
         view?.transitionAnimate(duration: duration,
                                 delay: delay,
                                 options: options,
+                                doAfterZeroZeroOne: doAfterZeroZeroOne,
+                                superViewLayoutIfNeed: superViewLayoutIfNeed,
+                                onceConfig: onceConfig,
                                 typeArr: typeArr,
                                 animateWith: animateWith,
                                 completion: completion)

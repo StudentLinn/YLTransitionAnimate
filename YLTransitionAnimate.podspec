@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
 
 # 名称
   s.name             = 'YLTransitionAnimate'
-  s.version          = '0.0.3'
+  s.version          = '0.0.4'
   s.summary          = '自己日常使用的过渡动画'
 
   s.description      = <<-DESC

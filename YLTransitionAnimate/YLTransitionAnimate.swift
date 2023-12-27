@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-///过渡动画类型
+///过渡动画类型(移动位置的话需要有snp并且设置了centerY或者X属性)
 public enum YLTransitionAnimateType : Int {
     ///淡入（修改透明度）
     case fadeIn = 1
@@ -15,18 +16,20 @@ public enum YLTransitionAnimateType : Int {
     case fadeOut = 2
     ///淡出后又淡入
     case fadeOutAndIn = 3
-    ///向上移动半屏
+    ///移动到顶部
     case transToTop = 4
-    ///向下移动半屏
+    ///移动到底部
     case transToBottom = 5
-    ///向左移动半屏
+    ///移动到左边
     case transToLeft = 6
-    ///向右移动半屏
+    ///移动到右边
     case transToRight = 7
+    ///移动到中心点
+    case transToCenter = 8
     ///缩放动画(变小后变大)
-    case scaleFromSmall = 8
+    case scaleFromSmall = 9
     ///缩放动画(变大后变小)
-    case scaleFromBig = 9
+    case scaleFromBig = 10
 }
 
 //MARK: 动画效果
@@ -37,6 +40,8 @@ extension UIView {
     ///   - delay: 动画延迟时间默认0.00
     ///   - options: 动画设置数组->默认淡入淡出首尾减速+允许同时执行
     ///   - doAfterZeroZeroOne: 是否需要延迟0.01秒与主线程拆分开来
+    ///   - superViewLayoutIfNeed: 父类的布局是否需要刷新
+    ///   - onceConfig:单次配置
     ///   - type: 动画类型
     ///   - animateWith: 执行动画时伴随着什么一起执行
     ///   - completion: 完成回调(传出动画是否在调用完成处理程序之前实际完成)
@@ -44,9 +49,18 @@ extension UIView {
                                   delay:Double = 0.00,
                                   options:AnimationOptions = [.curveEaseInOut, .beginFromCurrentState],
                                   doAfterZeroZeroOne:Bool = true,
+                                  superViewLayoutIfNeed:Bool = true,
+                                  onceConfig:((inout YLTransitionAnimateConfig) -> Void)? = nil,
                                   typeArr:[YLTransitionAnimateType],
                                   animateWith:(() -> Void)? = nil,
                                   completion:((Bool) -> Void)? = nil){
+        //记录配置
+        let config = YLTransitionAnimateManager.shared.config
+        //如果有单次设置
+        if let onceConfig = onceConfig {
+            //修改
+            onceConfig(&YLTransitionAnimateManager.shared.config)
+        }
         //是否与主线程拆分开来
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + (doAfterZeroZeroOne ? 0.01 : 0)) {
             //延迟delay秒后执行持续duration时间动画设置效果为options
@@ -59,8 +73,14 @@ extension UIView {
                     //传入动画持续时间和需要执行的操作
                     YLTypeAnimateDo(duration: duration, type: type)
                 }
-                layoutIfNeeded()
+                //刷新布局
+                superViewLayoutIfNeed ? superview?.layoutIfNeeded() : layoutIfNeeded()
             } completion: { success in
+                //如果有使用单次配置
+                if onceConfig != nil {
+                    //还原配置
+                    YLTransitionAnimateManager.shared.config = config
+                }
                 completion?(success)
             }
         }
@@ -95,14 +115,26 @@ extension UIView {
             UIView.addKeyframe(withRelativeStartTime: keyTime, relativeDuration: duration) {
                 self.alpha = config.fadeInAlpha
             }
-        case .transToTop : //从下向上
-            center.y -= config.verticalTransitionPadding
-        case .transToBottom : //从上向下
-            center.y += config.verticalTransitionPadding
-        case .transToRight : //从左向右
-            center.x += config.horizontalTransitionPadding
-        case .transToLeft : //从右向左
-            center.x -= config.horizontalTransitionPadding
+        case .transToTop : //移动到顶部
+            snp.updateConstraints { make in
+                make.centerY.equalToSuperview().offset(-config.verticalTransitionPadding)
+            }
+        case .transToBottom : //移动到底部
+            snp.updateConstraints { make in
+                make.centerY.equalToSuperview().offset(config.verticalTransitionPadding)
+            }
+        case .transToLeft : //移动到左边
+            snp.updateConstraints { make in
+                make.centerX.equalToSuperview().offset(-config.horizontalTransitionPadding)
+            }
+        case .transToRight : //移动到右边
+            snp.updateConstraints { make in
+                make.centerX.equalToSuperview().offset(config.horizontalTransitionPadding)
+            }
+        case .transToCenter : //移动到中心点
+            snp.updateConstraints { make in
+                make.centerY.equalToSuperview()
+            }
         case .scaleFromSmall : //缩放动画从小到大
             //记录初始值
             let transForm = self.transform
